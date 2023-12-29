@@ -45,11 +45,16 @@ mail.settings = {
         type = "string", default = "%Y-%m-%d %X", group = "other", index = 3, label = S("Date format"),
         dataset = {"%Y-%m-%d %X", "%d/%m/%y %X", "%A %d %B %Y %X"}, format = os.date
     },
+    mute_list = {
+        type = "list", default = {}, group = "spam", index = 1,
+        label = S("Mute list")
+    },
 }
 
 mail.settings_groups = {
     { name = "notifications", label = S("Notifications")},
     { name = "message_list",  label = S("Message list")},
+    { name = "spam",          label = S("Spam")},
     { name = "other",         label = S("Other")}
 }
 
