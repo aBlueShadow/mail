@@ -65,6 +65,16 @@ for s, d in pairs(mail.settings) do
     end
 end
 
+function mail.settings.mute_list.check(name, value)
+    local valid_players = {}
+    for _, p in ipairs(value) do
+        if p ~= name and minetest.player_exists(p) then
+            table.insert(valid_players, p)
+        end
+    end
+    return valid_players
+end
+
 function mail.settings.mute_list.sync(name)
     if minetest.get_modpath("beerchat") then
         local players = {}
