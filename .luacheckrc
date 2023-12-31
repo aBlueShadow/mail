@@ -6,6 +6,7 @@ read_globals = {
 	-- Stdlib
 	string = {fields = {"split"}},
 	table = {fields = {"copy", "getn", "indexof"}},
+	beerchat = {fields = {"has_player_muted_player", "execute_callbacks"}},
 
 	-- Minetest
 	"minetest",
