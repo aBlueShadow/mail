@@ -438,8 +438,11 @@ function mail.get_setting(playername, key)
 		or {entry.settings[key]})[1]
 
 	if mail.settings[key].sync then -- in case this setting is shared with another mod
-		value = mail.settings[key].sync(playername, key) -- get new value
-		mail.set_setting(playername, key, value, false) -- update the setting in mail storage and don't transfer it again
+		local sync_value = mail.settings[key].sync(playername) -- get new value
+		if sync_value then
+			value = sync_value
+			mail.set_setting(playername, key, value, true) -- update the setting in mail storage and don't transfer it again
+		end
 	end
 
 	return value
@@ -451,7 +454,7 @@ function mail.set_setting(playername, key, value, not_transfer)
 	entry.settings[key] = value
 	mail.set_storage_entry(playername, entry)
 	if not not_transfer and mail.settings[key].transfer then -- in case this setting is shared with another mod
-		mail.settings[key].transfer(playername, key, value)
+		mail.settings[key].transfer(playername, value)
 	end
 end
 
