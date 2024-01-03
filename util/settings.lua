@@ -75,7 +75,7 @@ function mail.settings.mute_list.check(name, value)
     return valid_players
 end
 
-function mail.settings.mute_list.sync(name)
+--[[function mail.settings.mute_list.sync(name)
     if minetest.get_modpath("beerchat") then
         local players = {}
         for other_player, _ in minetest.get_auth_handler().iterate() do
@@ -86,7 +86,7 @@ function mail.settings.mute_list.sync(name)
         return players
     end
     return nil
-end
+end--]]
 
 function mail.settings.mute_list.transfer(name, value)
     if minetest.get_modpath("beerchat") then
