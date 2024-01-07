@@ -10,3 +10,14 @@ if minetest.get_modpath("unified_inventory") then
 			end
 		})
 end
+
+if minetest.global_exists("sfinv_buttons") then
+
+	sfinv_buttons.register_button("mail", {
+			title = "Mail",
+			image = "mail_button.png",
+			action = function(player) 
+				mail.show_mail_menu(player:get_player_name()) 
+			end			
+		})
+end
